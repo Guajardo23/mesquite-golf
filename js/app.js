@@ -352,7 +352,8 @@ function attachEntryListeners(container) {
             const par = course.par[currentHole - 1];
             const docKey = `${selectedPlayer}_${selectedDay}`;
             const existingHoles = allScores[docKey] || {};
-            const current = existingHoles[currentHole] != null ? existingHoles[currentHole] : par;
+            const pending = window._pendingScore && window._pendingScore[currentHole];
+            const current = pending != null ? pending : (existingHoles[currentHole] != null ? existingHoles[currentHole] : par);
             const newScore = Math.max(1, current + delta);
             // Temporarily store in demo scores for instant UI feedback
             if (!window._pendingScore) window._pendingScore = {};
