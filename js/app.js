@@ -106,21 +106,6 @@ function renderLeaderboard(container) {
         </div></div>`;
     }
 
-    // Individual standings
-    html += '<h2>Individual Standings</h2>';
-    html += '<table class="standings-table"><thead><tr><th>#</th><th>Player</th><th>Team</th><th>Points</th><th>Holes</th></tr></thead><tbody>';
-    standings.individualStandings.forEach((p, i) => {
-        const teamName = p.team === 1 ? 'Slobs' : 'Snobs';
-        html += `<tr class="team${p.team}-row">
-            <td>${i + 1}</td>
-            <td>${p.name}</td>
-            <td>${teamName}</td>
-            <td><strong>${p.totalPoints}</strong></td>
-            <td>${p.totalHolesPlayed}</td>
-        </tr>`;
-    });
-    html += '</tbody></table>';
-
     container.innerHTML = html;
 }
 
