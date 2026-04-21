@@ -213,9 +213,9 @@ function renderHoleByHole(course, playerStrokes, existingHoles) {
     }
     dots += '</div>';
 
-    // Number strip: show nearby values with current highlighted
-    const minVal = Math.max(1, currentScore - 2);
-    const maxVal = currentScore + 2;
+    // Number strip: show eagle through triple bogey+ range
+    const minVal = Math.max(1, par - 2);
+    const maxVal = par + 4;
     let strip = '<div class="number-strip">';
     for (let n = minVal; n <= maxVal; n++) {
         const isCurrent = n === currentScore;
