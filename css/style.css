@@ -28,6 +28,7 @@
 html {
     font-size: 17px;
     -webkit-text-size-adjust: 100%;
+    touch-action: manipulation;
 }
 
 body {
@@ -560,6 +561,7 @@ h3 {
     background: rgba(120, 120, 128, 0.08);
     cursor: pointer;
     transition: all 0.2s;
+    touch-action: manipulation;
 }
 
 .strip-num.current {
@@ -595,6 +597,7 @@ h3 {
     justify-content: center;
     transition: all 0.15s;
     -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
     color: var(--text);
 }
 
