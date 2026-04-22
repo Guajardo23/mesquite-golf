@@ -132,7 +132,13 @@ export function subscribeToScores(callback) {
         const allScores = {};
         snapshot.forEach((docSnap) => {
             const data = docSnap.data();
-            allScores[docSnap.id] = data.holes || {};
+            const rawHoles = data.holes || {};
+            // Firestore returns object keys as strings; normalize to integers
+            const holes = {};
+            for (const [key, val] of Object.entries(rawHoles)) {
+                holes[parseInt(key)] = val;
+            }
+            allScores[docSnap.id] = holes;
         });
         callback(allScores);
     });
