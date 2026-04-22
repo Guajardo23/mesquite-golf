@@ -197,13 +197,13 @@ function renderHoleByHole(course, playerStrokes, existingHoles) {
     const pts = stablefordPoints(currentScore, par, strokes);
     const netScore = currentScore - strokes;
     const diff = netScore - par;
-    let label = 'Par';
-    if (diff >= 2) label = 'Dbl Bogey+';
-    else if (diff === 1) label = 'Bogey';
-    else if (diff === 0) label = 'Par';
-    else if (diff === -1) label = 'Birdie';
-    else if (diff === -2) label = 'Eagle';
-    else if (diff <= -3) label = 'Albatross!';
+    let label = 'Net Par';
+    if (diff >= 2) label = 'Net Dbl Bogey+';
+    else if (diff === 1) label = 'Net Bogey';
+    else if (diff === 0) label = 'Net Par';
+    else if (diff === -1) label = 'Net Birdie';
+    else if (diff === -2) label = 'Net Eagle';
+    else if (diff <= -3) label = 'Net Albatross!';
     const previewClass = diff < 0 ? 'under' : diff > 0 ? 'over' : 'even';
 
     // Hole progress dots
