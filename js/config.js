@@ -44,24 +44,24 @@ export const SCHEDULE = [
         day: 1,
         course: "Sunriver",
         foursomes: [
-            { team1: ["JJ", "Brian"],  team2: ["Geoff", "Ron"] },
-            { team1: ["Nick", "Beto"], team2: ["Paul", "Brandon"] },
+            { team1: ["JJ", "Nick"],   team2: ["Brandon", "Paul"] },
+            { team1: ["Beto", "Brian"], team2: ["Geoff", "Ron"] },
         ],
     },
     {
         day: 2,
         course: "Coral Canyon",
         foursomes: [
-            { team1: ["JJ", "Nick"],    team2: ["Ron", "Brandon"] },
-            { team1: ["Brian", "Beto"], team2: ["Geoff", "Paul"] },
+            { team1: ["JJ", "Beto"],    team2: ["Brandon", "Geoff"] },
+            { team1: ["Nick", "Brian"],  team2: ["Paul", "Ron"] },
         ],
     },
     {
         day: 3,
         course: "Wolf Creek",
         foursomes: [
-            { team1: ["JJ", "Beto"],    team2: ["Geoff", "Brandon"] },
-            { team1: ["Brian", "Nick"],  team2: ["Ron", "Paul"] },
+            { team1: ["JJ", "Brian"],    team2: ["Brandon", "Ron"] },
+            { team1: ["Nick", "Beto"],   team2: ["Paul", "Geoff"] },
         ],
     },
 ];
