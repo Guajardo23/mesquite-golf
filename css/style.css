@@ -340,6 +340,79 @@ h3 {
 .bogey-row { background: rgba(179, 122, 42, 0.06); }
 .double-row { background: rgba(179, 58, 58, 0.06); }
 
+/* ── Golf Score Symbols ───────────────────────────────────────────────────── */
+.sym-par {
+    /* Plain number, no decoration */
+}
+
+.sym-birdie {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.8em;
+    height: 1.8em;
+    border-radius: 50%;
+    border: 2px solid var(--green);
+    color: var(--green-dark);
+    font-weight: 700;
+}
+
+.sym-eagle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.8em;
+    height: 1.8em;
+    border-radius: 50%;
+    border: 2px solid var(--blue);
+    box-shadow: 0 0 0 4px var(--card-bg), 0 0 0 6px var(--blue);
+    color: var(--blue);
+    font-weight: 700;
+}
+
+.sym-bogey {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.8em;
+    height: 1.8em;
+    border: 2px solid var(--bogey);
+    border-radius: 2px;
+    color: var(--bogey);
+    font-weight: 700;
+}
+
+.sym-double-bogey {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.8em;
+    height: 1.8em;
+    border: 2px solid var(--red);
+    border-radius: 2px;
+    box-shadow: 0 0 0 4px var(--card-bg), 0 0 0 6px var(--red);
+    color: var(--red);
+    font-weight: 700;
+}
+
+/* Stepper score symbols need larger sizing */
+.stepper-score .sym-birdie,
+.stepper-score .sym-eagle,
+.stepper-score .sym-bogey,
+.stepper-score .sym-double-bogey {
+    width: 1.6em;
+    height: 1.6em;
+    font-size: inherit;
+}
+
+.stepper-score .sym-eagle {
+    box-shadow: 0 0 0 5px var(--bg), 0 0 0 7px var(--blue);
+}
+
+.stepper-score .sym-double-bogey {
+    box-shadow: 0 0 0 5px var(--bg), 0 0 0 7px var(--red);
+}
+
 .subtotal-row {
     background: var(--khaki-light);
     font-weight: 600;

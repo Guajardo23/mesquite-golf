@@ -60,6 +60,23 @@ function refreshCurrentView() {
     }
 }
 
+// ── Score Symbol Helper ──────────────────────────────────────────────────────
+/**
+ * Wrap a score number in traditional golf symbology:
+ * Eagle or better: double circle, Birdie: single circle,
+ * Par: plain, Bogey: single square, Double bogey: double square,
+ * Triple bogey+: double square + poop emoji
+ */
+function scoreSymbol(gross, netDiff) {
+    if (gross == null) return '—';
+    if (netDiff <= -2) return `<span class="sym-eagle">${gross}</span>`;
+    if (netDiff === -1) return `<span class="sym-birdie">${gross}</span>`;
+    if (netDiff === 0)  return `<span class="sym-par">${gross}</span>`;
+    if (netDiff === 1)  return `<span class="sym-bogey">${gross}</span>`;
+    if (netDiff === 2)  return `<span class="sym-double-bogey">${gross}</span>`;
+    return `<span class="sym-double-bogey">${gross}</span> 💩`;
+}
+
 // ── Leaderboard View ─────────────────────────────────────────────────────────
 function renderLeaderboard(container) {
     const standings = calculateOverallStandings(SCHEDULE, allScores);
@@ -232,7 +249,7 @@ function renderHoleByHole(course, playerStrokes, existingHoles) {
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="6" y1="12" x2="18" y2="12"/></svg>
                     </button>
                     <div class="stepper-value">
-                        <div class="stepper-score">${currentScore}</div>
+                        <div class="stepper-score">${scoreSymbol(currentScore, diff)}</div>
                         <div class="stepper-rel ${previewClass}">${relLabel}</div>
                     </div>
                     <button class="stepper-btn plus" data-delta="1">
@@ -504,7 +521,7 @@ function renderScorecardViewer(container) {
             <td>${h.par}</td>
             <td class="dim">${h.hcpRank}</td>
             <td class="strokes">${h.strokes > 0 ? '●'.repeat(h.strokes) : ''}</td>
-            <td>${h.gross != null ? h.gross : '—'}</td>
+            <td>${h.gross != null ? scoreSymbol(h.gross, h.net - h.par) : '—'}</td>
             <td>${h.net != null ? h.net : '—'}</td>
             <td><strong>${h.points != null ? h.points : '—'}</strong></td>
         </tr>`;
