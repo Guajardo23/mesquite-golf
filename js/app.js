@@ -572,8 +572,9 @@ function renderRules(container) {
     html += '<h2>Match Scoring</h2>';
     html += '<ul>';
     html += '<li>Each day: two foursomes, each with a Slobs pair vs Snobs pair</li>';
-    html += '<li>Both players play their own ball; add up each pair\'s Stableford points</li>';
-    html += '<li>Pair with more points wins; margin carries to overall team total</li>';
+    html += '<li>Both players play their own ball with full handicap strokes</li>';
+    html += '<li><strong>Best-ball Stableford:</strong> on each hole, the pair takes the higher Stableford score of the two partners</li>';
+    html += '<li>Each pair\'s 18-hole best-ball total contributes to the team\'s daily score</li>';
     html += '<li>After 3 days, team with the most total Stableford points wins</li>';
     html += '</ul>';
 
