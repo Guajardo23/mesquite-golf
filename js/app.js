@@ -103,30 +103,17 @@ function renderLeaderboard(container) {
     // Day-by-day results
     html += '<h2>Daily Scores</h2>';
     for (const dayResult of standings.dayResults) {
-        // Gather individual player points for this day
-        const team1Players = [];
-        const team2Players = [];
-        for (const ind of standings.individualStandings) {
-            const dayData = ind.perDay.find(d => d.day === dayResult.day);
-            const pts = dayData ? dayData.total : 0;
-            if (ind.team === 1) team1Players.push({ name: ind.name, pts });
-            else team2Players.push({ name: ind.name, pts });
-        }
-        // Sort each team by points descending
-        team1Players.sort((a, b) => b.pts - a.pts);
-        team2Players.sort((a, b) => b.pts - a.pts);
-
         html += `<div class="day-section">
             <h3>Day ${dayResult.day}: ${dayResult.course}</h3>
             <div class="day-teams-grid">
                 <div class="day-team-col">
                     <div class="day-team-header team1-header">Slobs</div>
-                    ${team1Players.map(p => `<div class="day-player-row"><span>${p.name}</span><strong>${p.pts}</strong></div>`).join('')}
+                    ${dayResult.foursomes.map(f => `<div class="day-player-row"><span>${f.team1Players.join(' & ')}</span><strong>${f.team1Points}</strong></div>`).join('')}
                     <div class="day-team-total"><span>Total</span><strong>${dayResult.dayTotal.team1}</strong></div>
                 </div>
                 <div class="day-team-col">
                     <div class="day-team-header team2-header">Snobs</div>
-                    ${team2Players.map(p => `<div class="day-player-row"><span>${p.name}</span><strong>${p.pts}</strong></div>`).join('')}
+                    ${dayResult.foursomes.map(f => `<div class="day-player-row"><span>${f.team2Players.join(' & ')}</span><strong>${f.team2Points}</strong></div>`).join('')}
                     <div class="day-team-total"><span>Total</span><strong>${dayResult.dayTotal.team2}</strong></div>
                 </div>
             </div>
