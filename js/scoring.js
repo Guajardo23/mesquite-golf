@@ -135,20 +135,25 @@ export function calculateDayResults(daySchedule, allScores) {
     let dayTeam1 = 0, dayTeam2 = 0;
 
     for (const foursome of daySchedule.foursomes) {
+        // Best-ball Stableford: take the better score from each pair on every hole
+        const t1Cards = foursome.team1.map(name => {
+            const key = `${name}_${daySchedule.day}`;
+            const holes = allScores[key] || {};
+            return calculateScorecard(name, courseName, holes);
+        });
+
+        const t2Cards = foursome.team2.map(name => {
+            const key = `${name}_${daySchedule.day}`;
+            const holes = allScores[key] || {};
+            return calculateScorecard(name, courseName, holes);
+        });
+
         let t1Points = 0, t2Points = 0;
-
-        for (const name of foursome.team1) {
-            const key = `${name}_${daySchedule.day}`;
-            const holes = allScores[key] || {};
-            const card = calculateScorecard(name, courseName, holes);
-            t1Points += card.total;
-        }
-
-        for (const name of foursome.team2) {
-            const key = `${name}_${daySchedule.day}`;
-            const holes = allScores[key] || {};
-            const card = calculateScorecard(name, courseName, holes);
-            t2Points += card.total;
+        for (let h = 0; h < 18; h++) {
+            const t1HolePts = t1Cards.map(c => c.holes[h].points ?? 0);
+            const t2HolePts = t2Cards.map(c => c.holes[h].points ?? 0);
+            t1Points += Math.max(...t1HolePts);
+            t2Points += Math.max(...t2HolePts);
         }
 
         foursomeResults.push({
